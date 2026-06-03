@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>System Speech Translator Add-on Help</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #333;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        .shortcut {
+            font-weight: bold;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>System Speech Translator for NVDA</h1>
+    
+    <p>The System Speech Translator add-on captures audio from your computer's default speakers, transcribes the speech, translates it into your preferred language using the advanced X.AI API, and outputs the result seamlessly via NVDA.</p>
+
+    <h2>Configuration</h2>
+    <p>Before using the add-on, you must configure your API key and preferences:</p>
+    <ol>
+        <li>Open the NVDA menu (<code>NVDA+N</code>).</li>
+        <li>Navigate to <strong>Preferences</strong> &gt; <strong>Settings</strong>.</li>
+        <li>Scroll down to the <strong>System Speech Translator</strong> category.</li>
+        <li><strong>XAI API Key:</strong> Enter your valid X.AI API key. Use the "Show API Key" checkbox to verify you have pasted it correctly.</li>
+        <li><strong>Target Language:</strong> Select the language you want the audio translated into. If you select "TTS Language", the add-on will automatically detect and match your current NVDA voice language.</li>
+        <li><strong>Show results in a popup window:</strong> If checked, translations will be displayed in an accessible text window for reading. If unchecked, NVDA will instantly speak the translated text.</li>
+        <li><strong>Enable continuous background recording:</strong> If checked, the add-on maintains a rolling memory of the last few seconds of system audio, allowing you to retroactively translate audio that just played.</li>
+    </ol>
+
+    <h2>Keyboard Shortcuts</h2>
+    <p>The add-on uses a single unified gesture to control all translation features:</p>
+    <ul>
+        <li><span class="shortcut">NVDA+Shift+Escape</span>: 
+            <ul>
+                <li><strong>Single Press:</strong> Instantly translates the last X seconds of audio (if retroactive background recording is enabled in settings).</li>
+                <li><strong>Double Press:</strong> Starts a new manual audio recording. Pressing the shortcut again (single or double press) will stop the recording and begin translation.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Usage Instructions</h2>
+    
+    <h3>1. Retroactive Background Translation</h3>
+    <p>If you miss what was just said in a video or voice chat, press <code>NVDA+Shift+Escape</code> once. The add-on will grab the recent audio from memory (up to the duration specified in your settings), translate it, and read it out to you. You will hear a high-pitched beep indicating the translation process has started.</p>
+
+    <h3>2. Manual Recording</h3>
+    <p>To translate a longer segment of audio:</p>
+    <ul>
+        <li>Double-press <code>NVDA+Shift+Escape</code>.</li>
+        <li>NVDA will announce "Recording started" followed by a beep.</li>
+        <li>Let the audio play. (Note: Recordings are hard-capped at 120 seconds to prevent API timeouts).</li>
+        <li>Press <code>NVDA+Shift+Escape</code> again to stop recording. NVDA will announce "Processing" and fetch your translation.</li>
+    </ul>
+    
+    <blockquote>
+        <strong>Note:</strong> If a translation result dialog is currently open, triggering a new translation will automatically close the old window and display the new result. You can also press the <code>Escape</code> key to close the translation popup at any time.
+    </blockquote>
+
+</body>
+</html>
